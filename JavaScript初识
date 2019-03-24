@@ -1,0 +1,189 @@
+Javascript是网页开发者必须要学习的三大语言之一
+
+HTML定义网页内容，CSS指定网页布局，JavaScript控制网页的行为
+
+JavaScript能做的事情有：
+                 1、Web应用：网页特效、异步交互
+                 2、移动端应用：Cordova、Ionic、React Native
+                 3、服务端：Node.js、Express
+                 4、桌面应用：NW.js 和Electron
+                 5、游戏：WebGL
+                 6、VR：WebView渲染VR视角AR：Leap Motion
+                 7、硬件：Tessel2、IoT.js
+                 8、操作系统界面：Firefox OS、Chrome OS
+                 
+JavaScript是什么
+1、JavaScript是一种基于对象和事件驱动，并具有安全性能的脚本语言，它是通过嵌入或导入到标准的HTML文档中实现的。
+2、JavaScript脚本语言与HTML、CSS结合起来，可以在一个网页中链接多个对象，实现与用户的交互作用。
+3、JavaScript实现由三个部分组成。
+
+核心ECMAScript
+•规定了JS语言的组成：语法、类型、语句、关键字、保留字、操作符、对象，与浏览器没有依赖关系。
+文档对象模型DOM
+•针对XML但经过扩展用于HTML的应用程序编程接口，DOM把整个页面映射为一个多层节点结构的树
+•使用DOM API可以轻松删除、添加和替换节点，使开发者可以控制文档的内容和结构浏览器对象模型BOM
+•可以对浏览器窗口进行访问和操作
+•由于没有BOM标准，每种浏览器都有自己的BOM实现
+• HTML5致力把BOM的发部份功能写入正式规范，主要实现：–弹出新窗口–移动、缩放和关闭浏览器窗口–提供浏览器详细信息–对Cookie的支持
+
+一般的，Javascript语句都写在HTML代码<body></body>标签中以<script></script>的标签写出来。
+或者使用外链式：指将JavaScript代码保存到一个单独的文件中，通常使用"js"作为文件的扩展名，然后使用<script>标签的src属性引入文件中。
+并且使用相对路径（最佳）：../js/test.js23
+
+相比嵌入式，外链式的优势可以总结为以下3点：
+1、嵌入式会导致HTML与JavaScript代码混合在一起，不利用修改和维护。
+2、 嵌入式会增加HTML文件的体积，影响网页本身的加载速度，而外链式可以利用浏览器缓存提高速度。
+3、外链式有利于分布式部署。网页中链接的js、css、图片等静态文件可以部署到CDN服务器上，利用CDN的优势加快下载速度。
+
+JS代码的词法规则：
+1、区分大小写
+2忽略空白符和换行符
+3、可选的分号，半角分号（;）表示一个语句的结束
+4复合语句，使用花括号 “{}” 封装一组语句来组成代码块
+5、注释，在JavaScript的中，有以下两种形式的注释单行注释：单行注释以双斜线 “//” 开头多行注释：多行注释以 “/ *” 开始，以 “* /”结束
+6、标识符：用于表示变量名、函数名等名称，应遵循以下规则：
+                                                  第一个字符必须是字母、下划线（_）或美元符号（$）
+                                                  后面的字符可以是下划线、美元符号、英文字母或数字字符
+                                                  不能使用JavaScript中的关键字和保留字
+
+变量
+分为：全局变量和局部变量
+函数外边直接定义的变量称为全局变量，函数内部定义的变量称为局部变量。
+例如：
+<script type="text/javascript">
+    var test="全局变量";    //定义全局变量
+    function myFun(){
+        var test="局部变量";
+        alert(test);
+    }
+    myFun();
+    alert(test);
+</script>
+
+数据类型
+1.数值类：包含整数和浮点数
+2.布尔类：只有true和false两个值 
+3、字符串类：表示一个字符序列，必须使用单引号（''）或双引号（""）括起来
+4、Undefined：用来确定一个已经创建但还没有赋初值的变量，只有一个值为：undefined  （在使用var声明变量但未对其加以初始化时，这个变量值就是undefined）
+5、Null类：表明某个变量的值为空，只有一个值为：null
+6、Object类：该类型的值为对象，对象由一些列属性（变量）和方法（函数）的集合，访问它们时用：. 
+7、数组：一系列的变量
+8、函数：一段可执行的代码
+
+转换为String类型
+Boolean值：true → "true"，false→ "false"。
+Number值转换为NaN、0或与数值相应的字符串。
+其他对象：若存在，则转换为toString()方法的值，否则转换为"undefined"undefined → "undefined"。
+null → "null"。
+实现语法：
+toString方法：转换为相应的字符串表示String方法：返回由给定值转换得到的字符串
+
+默认转换规则
+数字+ 字符串：数字转换为字符串
+数字+ 布尔值：true转换为1，false转换为0
+字符串+ 布尔值：布尔值转换为字符串true或false
+强制类型转换
+parseInt：强制转换成整数，parseInt("a12")=NaN
+parseFloat：强制转换成浮点数，parseFloat("6.12")=6.12eval：将字符串强制转换为表达式并返回结果，eval("1+1")=226
+
+数组
+数组构成：由一个或多个数组元素组成的，各元素之间使用逗号","分割。
+数组元素：每个数组元素由"索引下标"和"值"构成。
+
+创建方式
+实例化Array对象的方式
+直接使用"[]"的方式
+// 元素值类型为字符串
+var area = new Array('Beijing', 'Shanghai', 'Shenzhen');
+// 元素值类型为数值型
+var score = new Array(56, 68, 98, 44);
+// 元素值类型为混合型
+var mix = new Array(123, 'abc', null, true, undefined);
+// 空数组var arr1 = new Array();   或var arr2 = new Array;
+var weather = ['wind', 'fine',]; // 相当于new  Array('wind', 'fine',)
+var empty = []; // 相当于：new Array
+// 控制台输出：["sad", empty × 3, "happy"]var mood = ['sad', , , ,'happy'];   
+
+获取和设置数组长度：length属性
+设置长度的规则
+设置的length>原数组长度，则没有值的数组元素会占用空存储位置。
+设置的length=原数组长度，则数组长度不变。
+设置的length<原数组长度，则多余的数组元素将会被舍弃。
+var arr1 = [78, 88, 98];
+var arr2 = ['a', , , , 'b', 'c'];
+console.log(arr1.length); // 输出结果为：3
+console.log(arr2.length); // 输出结果为：6
+var arr2 = [1, 2, 3];arr2.length = 4; // 输出结果：[1, 2, 3, empty]
+console.log(arr2); 
+var arr3 = ['a', 'b'];
+arr3.length = 2; // 输出结果：["a", "b"]
+console.log(arr3); 
+var arr4 = ['hehe', 'xixi', 'jiujiu'];
+arr4.length = 2; // 输出结果：["hehe", "xixi"]console.log(arr4); 
+
+访问数组元素
+数组元素访问方式："数组名[下标]"。
+遍历数组元素
+利用下标遍历数组：使用for
+利用下标遍历数组：使用for...in语句
+
+元素的添加与修改
+元素的添加与修改元素的方式："数组名[下标]"。
+var height = [];height[5] =  183;height[0] =  175;height[3] =  150;console.log(height);
+
+var arr=  'Asa  ','Taylor'];arr  [2] = 'Tom';arr  [3] =  'Jack';console.log(arr）;
+
+var arr= ['a', 'b', 'c', 'd'];arr  [2] = 123;arr  [3] = 456;console.log(arr  );
+
+元素的删除
+delete关键字只能删除数组中指定下标的元素值，删除后该元素依然会占用一个空的存储位置
+varstu= ['Tom', 'Jimmy', 'Lucy'];
+console.log(stu  );// 输出结果：["Tom", "Jimmy", "Lucy"]
+delete stu  [1];// 删除数组中第2个元素
+console.log(stu  );// 输出结果：["Tom", empty, "Lucy"]
+
+函数
+在Javascript中，函数就是对象，其应用：
+被赋值给一个变量
+1、被赋值为对象的属性
+2、作为参数被传入别的函数
+3、作为函数的结果被返回用字面量来创建
+
+函数的定义
+函数的定义由以下4部分组成：关键字function、函数名、参数和函数体。
+定义命名函数：function funcName(参数列表){
+statements[return [expr]];
+}
+function sayHi(name, message){
+alert("hello" + name + ", " + message);
+}
+无参函数：适用于不需要提供任何数据，即可完成指定功能的情况。
+有参函数：适用于开发时函数体内的操作需要用户传递数据的情况。
+                          形参：形式参数，具有特定的含义，在定义有参函数时设置的参数。
+                          实参：实际参数，也就是具体的值，在函数调用时传递的参数。
+function maxNum(a, b) {
+a  =    parseInt(a);
+b  =    parseInt(b);
+return a >= b ? a : b;
+}
+
+获取函数调用时传递的所有实参：适用于开发时函数体形参不确定的情况。
+实现方式：利用arguments对象，在函数体内可获取函数调用时传递的实参。
+其他操作：length属性可获取实参的总数，具体实参值可利用数组遍历方式。
+function transferParam() {
+console.log(arguments.length);
+console.log(arguments);
+}
+
+函数调用
+直接调用：函数名(实参值) sayHi("南工院", "hyw");
+在表达式中调用
+这种方式适合有返回值的函数，返回值作为表达式的一部分参与运算，有时还会和（alert、document）等语句配合输出。
+function add(a,b){
+    return a+b;
+}
+var sum=add(4,5);
+alert(sum);    //9
+alert(add(4,5));
+
+在事件中用“onclick”调用
