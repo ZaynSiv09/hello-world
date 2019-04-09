@@ -1,0 +1,72 @@
+什么是面向对象？
+面向对象是一种对现实世界理解和抽象的方法，是计算机编程技术发展到一定阶段后的产物。
+
+世界上的任何事和物都可以被视为对象。
+
+js中的面向对象
+面向对象在js里有两个层次的含义，第一种是会使用面向对象函数；第二种是构造面向对象函数。
+
+面向对象有四个特点： 
+1. 抽象：抓住核心问题 
+2. 封装：即把能够实现功能的函数写成封装起来，在面向对象里叫做方法。简单来说就是把实现功能的函数写成方法。 
+        由于JavaScript没有public、private、protected这些关键字，但是可以利用变量的作用域来模拟public和private封装特性
+       例如smarList.js:
+        var SmartList=function(prefix,defList){
+        Find.prototype.prefix=prefix;
+        var find=new Find(document.getElementsByClassName(prefix)[0]);
+        var list=new List(find.className('option'));
+        for (var i in defList){
+            list.add(defList[i]);
+        }
+        var add={
+            'show':find.className('add-show'),
+            'area':find.className('add-area'),
+            'input':find.className('add-input'),
+            'add':find.className('add-add'),
+            'cancel':find.className('add-cancel'),
+        };
+         List.prototype={
+            add:function(value){
+                var tmp=this.tmp.cloneNode(true);
+            }
+  封装对象的属性：（Object.prototype Object 的原型对象，不是每个对象都有prototype属性）
+3. 继承：继承的意思是，在实现同一种功能的前提下，新对象可以使用就对象的属性和方法。 
+   例如子类可以继承父类的属性和方法，有点类似于JAVA的get&set
+   var Person = Class.extend( { _issleeping:
+       true, init: function( name ) { 
+       this._name = name; 
+       }
+       isSleeping: function() { return
+       this._issleeping; 
+       } 
+       } ); // 声明 Programmer 类，并继承 Person 
+       var Programmer = Person.extend( {
+       init: function( name, issleeping ) { 
+       // 调用父类构造函数 
+       this._super( name ); // 设置自己的状态
+       this._issleeping = issleeping; 
+       } 
+       } );
+       var person = new Person( "张三" ); 
+       var diors = new Programmer( "张四", false ); // 打印 true 
+       console.log( person.isSleeping() ); // 打印 false
+       console.log( diors.isSleeping() ); // 此处全为 true，故打印 true 
+       console.log( person instanceof Person && person instanceof Class && diors instanceof Programmer &&diors instanceof Person && diors instanceof Class );
+4. 多态：一个变量在引用不同类型的情况下的不同状态。多态开发在开发组件和模块化开发的时候能节省很多资源。
+         例如：function makeSound2(animal) {
+    animal.sound()
+}
+ 
+function Student1(){}
+Student1.prototype.job = function() {
+    console.log("读书")
+}
+ 
+function Teacher1(){}
+Teacher1.prototype.job =function() {
+    console.log("教育")
+}
+ 
+makejob1(new Student1())
+makejob1(new Teacher1())
+
